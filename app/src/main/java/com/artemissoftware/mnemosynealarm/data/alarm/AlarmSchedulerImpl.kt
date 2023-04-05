@@ -8,8 +8,9 @@ import android.os.Bundle
 import com.artemissoftware.mnemosynealarm.domain.alarm.AlarmScheduler
 import com.artemissoftware.mnemosynealarm.domain.model.AlarmItem
 import java.time.ZoneId
+import javax.inject.Inject
 
-class AlarmSchedulerImpl(
+class AlarmSchedulerImpl @Inject constructor(
     private val context: Context,
     private val alarmManager: AlarmManager,
 ) : AlarmScheduler {

@@ -4,11 +4,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.artemissoftware.mnemosynealarm.domain.alarm.AlarmScheduler
 import com.artemissoftware.mnemosynealarm.domain.model.AlarmItem
-import dagger.hilt.android.HiltAndroidApp
+import dagger.hilt.android.lifecycle.HiltViewModel
 import java.time.LocalDateTime
 import javax.inject.Inject
 
-@HiltAndroidApp
+@HiltViewModel
 class AlarmViewModel @Inject constructor(
     private val alarmScheduler: AlarmScheduler,
 ) : ViewModel() {
@@ -38,6 +38,9 @@ class AlarmViewModel @Inject constructor(
 
             alarmScheduler.schedule(alarmItem)
 
+            val list = alarms.value.toMutableList()
+            list.add(alarmItem)
+            alarms.value = list
             secondsToTriggerAlarm.value = ""
             message.value = ""
         }

@@ -21,19 +21,18 @@ fun AlarmScreen(viewModel: AlarmViewModel = hiltViewModel()) {
             .padding(16.dp),
     ) {
         AlarmCreator(
-           secondsToTriggerAlarm = viewModel.secondsToTriggerAlarm.value,
-           onSecondsToTriggerAlarmValueChange = {
+            secondsToTriggerAlarm = viewModel.secondsToTriggerAlarm.value,
+            onSecondsToTriggerAlarmValueChange = {
                 viewModel.secondsToTriggerAlarm.value = it
-           },
-           message = viewModel.message.value,
-           onMessageValueChange = {
-               viewModel.message.value = it
-           },
-           onCreateAlarm = {
+            },
+            message = viewModel.message.value,
+            onMessageValueChange = {
+                viewModel.message.value = it
+            },
+            onCreateAlarm = {
                 viewModel.onTriggerEvent(AlarmEvents.Create)
-           },
+            },
         )
-
 
         LazyColumn(
             modifier = Modifier
@@ -49,7 +48,7 @@ fun AlarmScreen(viewModel: AlarmViewModel = hiltViewModel()) {
                         modifier = Modifier.fillMaxWidth(),
                     )
                 }
-            }
+            },
         )
     }
 }
