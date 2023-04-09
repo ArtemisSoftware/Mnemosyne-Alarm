@@ -39,7 +39,7 @@ class AlarmViewModel @Inject constructor(
             alarmScheduler.schedule(alarmItem)
 
             val list = alarms.value.toMutableList()
-            list.add(alarmItem)
+            list.add(0, alarmItem)
             alarms.value = list
             secondsToTriggerAlarm.value = ""
             message.value = ""
